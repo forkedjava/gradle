@@ -56,10 +56,11 @@ import org.gradle.api.internal.artifacts.repositories.transport.RepositoryTransp
 import org.gradle.api.internal.artifacts.repositories.transport.RepositoryTransportFactory;
 import org.gradle.api.internal.changedetection.state.isolation.IsolatableFactory;
 import org.gradle.api.internal.file.FileResolver;
+import org.gradle.api.model.ObjectFactory;
 import org.gradle.internal.action.InstantiatingAction;
 import org.gradle.internal.component.external.model.ModuleComponentArtifactIdentifier;
 import org.gradle.internal.component.external.model.ModuleComponentArtifactMetadata;
-import org.gradle.internal.component.external.model.MutableIvyModuleResolveMetadata;
+import org.gradle.internal.component.external.model.ivy.MutableIvyModuleResolveMetadata;
 import org.gradle.internal.reflect.Instantiator;
 import org.gradle.internal.resource.local.FileResourceRepository;
 import org.gradle.internal.resource.local.FileStore;
@@ -104,8 +105,9 @@ public class DefaultIvyArtifactRepository extends AbstractAuthenticationSupporte
                                         ModuleMetadataParser moduleMetadataParser,
                                         FeaturePreviews featurePreviews,
                                         IvyMutableModuleMetadataFactory metadataFactory,
-                                        IsolatableFactory isolatableFactory) {
-        super(instantiatorFactory.decorate(), authenticationContainer);
+                                        IsolatableFactory isolatableFactory,
+                                        ObjectFactory objectFactory) {
+        super(instantiatorFactory.decorate(), authenticationContainer, objectFactory);
         this.fileResolver = fileResolver;
         this.transportFactory = transportFactory;
         this.locallyAvailableResourceFinder = locallyAvailableResourceFinder;
