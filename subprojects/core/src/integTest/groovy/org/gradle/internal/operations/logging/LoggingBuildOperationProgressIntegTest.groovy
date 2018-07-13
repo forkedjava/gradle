@@ -325,7 +325,7 @@ class LoggingBuildOperationProgressIntegTest extends AbstractIntegrationSpec {
             apply plugin: 'java'
             
             repositories {
-                jcenter()
+                ${jcenterRepository()}
             }
             dependencies {
                 testCompile 'junit:junit:4.10'
